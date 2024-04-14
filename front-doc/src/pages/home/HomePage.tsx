@@ -1,7 +1,8 @@
 export const HomePage =() =>{
 return(
-<div>
-    <h1>Home page</h1>
+<div className="section">
+    <h1>Привет, это сайт документооборота! 
+Выбери нужный тебе документ</h1>
 </div>
 );
 };
