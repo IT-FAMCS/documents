@@ -22,9 +22,9 @@ export const CardComponent: React.FC<CardComponentProps> = (props) => {
                      
                 <Card variant="outlined">
                     <CardActionArea onClick={handleClick}>
-                        <CardContent >
-                            <Typography variant="h6"  sx={{ mb:4 }} fontFamily='Jost'>{props.name}</Typography>
-                            <Typography variant="body1" color='text.secondary' fontFamily='Jost'>{props.description}</Typography>
+                        <CardContent style={{backgroundColor: '#d9d9d9'}}>
+                            <Typography variant="h6"  sx={{ mb:3 }} fontFamily='Jost' fontWeight='700'>{props.name}</Typography>
+                            <Typography variant="body1" color='text.secondary' fontFamily='Jost' fontSize='24'>{props.description}</Typography>
                         </CardContent>
                     </CardActionArea>
                 </Card>   
