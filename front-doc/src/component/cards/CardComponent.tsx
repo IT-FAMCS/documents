@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
-
+import '../../App.css'
 import {Card, CardContent, Typography, CardActionArea} from "@mui/material"
+import '@fontsource/jost'
 
 
 interface CardComponentProps {
@@ -17,15 +18,16 @@ export const CardComponent: React.FC<CardComponentProps> = (props) => {
         navigate(props.path)
     }
     
-    return (                 
+    return (        
+                     
                 <Card variant="outlined">
                     <CardActionArea onClick={handleClick}>
-                        <CardContent>
-                            <Typography variant="h6"  sx={{ mb:3 }}>{props.name}</Typography>
-                            <Typography variant="body1" color='text.secondary' >{props.description}</Typography>
+                        <CardContent >
+                            <Typography variant="h6"  sx={{ mb:4 }} fontFamily='Jost'>{props.name}</Typography>
+                            <Typography variant="body1" color='text.secondary' fontFamily='Jost'>{props.description}</Typography>
                         </CardContent>
                     </CardActionArea>
                 </Card>   
-       
+            
     )
 }
