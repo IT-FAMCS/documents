@@ -1,7 +1,13 @@
+import Stack from '@mui/material/Stack';
+
 export const HomePage =() =>{
 return(
-<div>
-    <h1>Home page</h1>
-</div>
+<section className="main">
+    <Stack
+    useFlexGap
+    >
+        <h2>Привет, это сайт документооборота!Выбери нужный тебе документ</h2>
+    </Stack>
+</section>
 );
 };
