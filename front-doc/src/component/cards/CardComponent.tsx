@@ -19,10 +19,8 @@ export const CardComponent: React.FC<CardComponentProps> = (props) => {
 
   return (
         <Card variant="outlined" sx={{
-             minWidth: 300,
-             minHeight: 150, 
-             maxHeight: 150, 
-             maxWidth: 300 
+             width: 300,
+             height: 150
         }}>
             <CardActionArea onClick={handleClick}>
                 <CardContent style={{ backgroundColor: "#d9d9d9" }} sx={{ minWidth: 300, minHeight: 150 }} >
