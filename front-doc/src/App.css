@@ -32,36 +32,6 @@ main {
   color: black;
 }
 
-.account {
-  margin: 0px 10px 0px 0px;
-  width: 200px;
-  height: 50px;
-  background-color: rgb(255, 255, 255);
-  color: black;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  border: 1px solid black;
-  border-radius: 20px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  font-size: 20px;
-}
-
-.change-of-topic {
-  margin: 0px 10px 0px 0px;
-  width: 200px;
-  height: 50px;
-  background-color: rgb(255, 255, 255);
-  color: black;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  border: 1px solid black;
-  border-radius: 20px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  font-size: 20px;
-}
-
 .footer-component {
   background-color: #fa612a;
   width: 100%;
