@@ -1,6 +1,3 @@
 export const ListPage = () => {
-  
-    return (
-        <div>fpjgjfsg</div>
-     );
-   };
+  return <div>fpjgjfsg</div>;
+};

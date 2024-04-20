@@ -1,6 +1,3 @@
 export const ReleasePage = () => {
-  
-    return (
-        <div>fpjgjfsg</div>
-     );
-   };
+  return <div>fpjgjfsg</div>;
+};

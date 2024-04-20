@@ -1,6 +1,3 @@
 export const ReportPage = () => {
-  
-    return (
-        <div>fpjgjfsg</div>
-     );
-   };
+  return <div>fpjgjfsg</div>;
+};
