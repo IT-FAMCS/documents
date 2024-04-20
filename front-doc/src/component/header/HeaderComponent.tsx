@@ -12,7 +12,7 @@ export const HeaderComponent=()=>{
             justifyContent='space-between'
             >
                 <a>
-                    <img className="logo" width={40} height={40} src={logo} alt="Raccoon logo"></img>
+                    <img className="logo" src={logo} alt="Raccoon logo"></img>
                 </a>
                 <h1 className="header-text">
                     Документооборот Проектного направления
