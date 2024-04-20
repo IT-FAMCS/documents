@@ -7,8 +7,8 @@ import { ReportPage } from "./pages/ReportPage";
 import { ReleasePage } from "./pages/ReleasePage";
 import { OrderPage } from "./pages/OrderPage";
 import { ListPage } from "./pages/ListPage";
-import { HeaderComponent } from "./component/header/HeaderComponent";
-import { FooterComponent } from "./component/footer/FooterComponent";
+import { HeaderComponent } from "./components/header/HeaderComponent";
+import { FooterComponent } from "./components/footer/FooterComponent";
 
 function App() {
   return (
