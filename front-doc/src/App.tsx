@@ -17,14 +17,14 @@ function App() {
   return (
       <>
       <HeaderComponent/>
-       <main>
-        <Routes> 
-          <Route path="/" element={<HomePage/>}/> 
-          <Route path="report" element={<ReportPage/>}/>
-          <Route path="release" element={<ReleasePage/>}/> 
-          <Route path="order" element={<OrderPage/>}/> 
-          <Route path="list" element={<ListPage/>}/>
-        </Routes>
+        <main>
+          <Routes> 
+            <Route path="/" element={<HomePage/>}/> 
+            <Route path="report" element={<ReportPage/>}/>
+            <Route path="release" element={<ReleasePage/>}/> 
+            <Route path="order" element={<OrderPage/>}/> 
+            <Route path="list" element={<ListPage/>}/>
+          </Routes>
         </main>
       <FooterComponent/>
       </>
