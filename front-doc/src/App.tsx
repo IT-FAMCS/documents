@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import { Route,Routes } from 'react-router-dom';
 import { HomePage } from './pages/home/HomePage';
-import { HeaderComponent } from './component/header/HeaderComponent';
-import { FooterComponent } from './component/footer/FooterComponent';
+import { HeaderComponent } from './components/header/HeaderComponent';
+import { FooterComponent } from './components/footer/FooterComponent';
 
 
 
