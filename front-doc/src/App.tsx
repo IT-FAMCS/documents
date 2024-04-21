@@ -3,12 +3,12 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/home/HomePage";
-import { HeaderComponent } from "./components/header/HeaderComponent";
-import { FooterComponent } from "./components/footer/FooterComponent";
 import { ReportPage } from "./pages/ReportPage";
 import { ReleasePage } from "./pages/ReleasePage";
 import { OrderPage } from "./pages/OrderPage";
 import { ListPage } from "./pages/ListPage";
+import { HeaderComponent } from "./components/header/HeaderComponent";
+import { FooterComponent } from "./components/footer/FooterComponent";
 
 function App() {
   return (
