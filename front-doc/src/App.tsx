@@ -9,6 +9,7 @@ import { ReportPage } from "./pages/documentPages/ReportPage";
 import { ReleasePage } from "./pages/documentPages/ReleasePage";
 import { OrderPage } from "./pages/documentPages/OrderPage";
 import { ListPage } from "./pages/documentPages/ListPage";
+import { LoginPage } from "./pages/login/LoginPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="release" element={<ReleasePage />} />
           <Route path="order" element={<OrderPage />} />
           <Route path="list" element={<ListPage />} />
+          <Route path="login" element={<LoginPage />}/>
         </Routes>
       </main>
       <FooterComponent />
