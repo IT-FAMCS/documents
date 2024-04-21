@@ -16,7 +16,7 @@ export const HeaderComponent = () => {
       >
         <img className="logo" src={logo} alt="Raccoon logo"></img>
         <h1 className="header-text">Документооборот Проектного направления</h1>
-        <section className="button-section">
+        <div className="button-section">
           <Button
             style={{
               borderColor: "#000000",
@@ -33,7 +33,7 @@ export const HeaderComponent = () => {
           >
             change of topic
           </Button>
-        </section>
+        </div>
       </Stack>
     </header>
   );
