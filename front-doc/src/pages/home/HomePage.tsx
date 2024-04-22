@@ -1,4 +1,4 @@
-import { CardComponent } from "../../components/cards/CardComponent";
+import { CardComponent } from "../../components/cards/DocumentCardComponent";
 import { Box, Stack } from "@mui/material";
 import { documentTypes } from "../../constants/documentTypes";
 
