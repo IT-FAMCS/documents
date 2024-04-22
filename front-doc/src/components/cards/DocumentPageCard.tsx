@@ -3,13 +3,13 @@ import "../../App.css";
 import { Card, CardContent, Typography, CardActionArea } from "@mui/material";
 import "@fontsource/jost";
 
-interface CardComponentProps {
+interface DocumentPageCardProps {
   path: string;
   header: string;
   description: string;
 }
 
-export const CardComponent: React.FC<CardComponentProps> = (props) => {
+export const DocumentPageCard: React.FC<DocumentPageCardProps> = (props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
