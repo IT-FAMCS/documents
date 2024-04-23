@@ -3,12 +3,13 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/home/HomePage";
-import { ReportPage } from "./pages/ReportPage";
-import { ReleasePage } from "./pages/ReleasePage";
-import { OrderPage } from "./pages/OrderPage";
-import { ListPage } from "./pages/ListPage";
 import { HeaderComponent } from "./components/header/HeaderComponent";
 import { FooterComponent } from "./components/footer/FooterComponent";
+import { ReportPage } from "./pages/documentPages/ReportPage";
+import { ReleasePage } from "./pages/documentPages/ReleasePage";
+import { OrderPage } from "./pages/documentPages/OrderPage";
+import { ListPage } from "./pages/documentPages/ListPage";
+import { LoginPage } from "./pages/login/LoginPage";
 
 function App() {
   return (
@@ -16,11 +17,12 @@ function App() {
       <HeaderComponent />
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/*" element={<HomePage />} />
           <Route path="report" element={<ReportPage />} />
           <Route path="release" element={<ReleasePage />} />
           <Route path="order" element={<OrderPage />} />
           <Route path="list" element={<ListPage />} />
+          <Route path="login" element={<LoginPage />}/>
         </Routes>
       </main>
       <FooterComponent />
