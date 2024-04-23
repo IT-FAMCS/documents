@@ -17,7 +17,7 @@ function App() {
       <HeaderComponent />
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/*" element={<HomePage />} />
           <Route path="report" element={<ReportPage />} />
           <Route path="release" element={<ReleasePage />} />
           <Route path="order" element={<OrderPage />} />
