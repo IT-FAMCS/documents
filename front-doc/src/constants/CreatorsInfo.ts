@@ -1,4 +1,4 @@
-export const CreatorsInfo = [
+export const creatorsInfo = [
    {
       name: "Yauheni",
       surname: "Piatrovich", 

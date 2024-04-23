@@ -3,19 +3,18 @@ import "@fontsource/jost";
 import { GitHub, Telegram } from "@mui/icons-material";
 
 interface CreatorCardInterface  {
-    name: "string",
-    surname: "string",
-    role: "string",  
-    telegram: "string", 
-    github: "string"
+    name: string,
+    surname: string,
+    role: string,  
+    telegram: string, 
+    github: string
 }
 
 
 export const CreatorCard: React.FC<CreatorCardInterface> = (props) => {
 
     const handleTelegramClick = () => {
-        props.telegram
-        window.location.href="www.t.me/" + props.telegram;
+        window.location.href="https://t.me/" + props.telegram;
     }
 
     const handleGithubClick = () => {
@@ -31,7 +30,7 @@ export const CreatorCard: React.FC<CreatorCardInterface> = (props) => {
             <CardContent 
                 sx={{
                     alignItems: "center",
-                    textAlign: "center" 
+                    textAlign: "center"
                 }}
             >
                 <Typography>{props.name} {" "} {props.surname}</Typography>
@@ -39,8 +38,7 @@ export const CreatorCard: React.FC<CreatorCardInterface> = (props) => {
                 <Stack direction={'row'}>
                     <Telegram onClick={handleTelegramClick} />
                     <GitHub onClick={handleGithubClick} />
-                </Stack>
-                
+                </Stack>                
 
             </CardContent>
         </Card>
