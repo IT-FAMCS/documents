@@ -21,8 +21,12 @@ export const LoginPage = () => {
     return(        
 
         <form 
-            style={{width: '100'}}
-            onSubmit={loginSubmit}            
+            style={{
+                width: '100',
+                padding: '20%'
+            }}
+            onSubmit={loginSubmit}
+                        
         >
 
             <TextField
