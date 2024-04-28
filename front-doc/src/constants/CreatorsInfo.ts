@@ -3,20 +3,20 @@ export const creatorsInfo = [
       name: "Yauheni",
       surname: "Piatrovich", 
       telegram: "epiatrovich",
-      role: "Fronted",
+      role: "Frontend",
       github: "https://github.com/PERSEFA1" 
    },
    {
       name: "Ivan",
       surname: "Terentiev", 
       telegram: "cvrssxxdd",
-      role: "Fronted",
+      role: "Frontend",
       github: "https://github.com/Simiys" 
      }, 
    {
       name: "Evgeniy",
       surname: "Shevtsov", 
-      role: "Fronted/Mentor",
+      role: "Frontend/Mentor",
       telegram: "pblcb_ev",
       github: "https://github.com/PblCbGomel" 
    }, 
@@ -26,14 +26,5 @@ export const creatorsInfo = [
       role: "Backend", 
       telegram: "Aiki_v",
       github: "https://github.com/essaon" 
-   },
-   {
-      name: "Atsiom",
-      surname: "Kaktysh",
-      role: "Lead", 
-      telegram: "aaaaaaaaaaaaaaaartem",
-      github: "https://github.com/50ShadesOfCode" 
-   
-   }  
-
+   }
 ]

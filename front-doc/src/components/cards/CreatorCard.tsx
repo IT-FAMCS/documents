@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, CardActionArea, Stack } from "@mui/material";
+import { Card, CardContent, Typography, CardActionArea, Stack, Button } from "@mui/material";
 import "@fontsource/jost";
 import { GitHub, Telegram } from "@mui/icons-material";
 
@@ -33,11 +33,35 @@ export const CreatorCard: React.FC<CreatorCardInterface> = (props) => {
                     textAlign: "center"
                 }}
             >
-                <Typography>{props.name} {" "} {props.surname}</Typography>
-                <Typography>{props.role}</Typography>
-                <Stack direction={'row'}>
-                    <Telegram onClick={handleTelegramClick} />
-                    <GitHub onClick={handleGithubClick} />
+                <Typography
+                    variant="h5"
+                    fontFamily={"Jost"}
+                >
+                    {props.name} {" "} {props.surname}
+                </Typography>
+                <Typography
+                    fontFamily={"Jost"}
+                    variant="body1"
+                >
+                    {props.role}
+                </Typography>
+                <Stack 
+                    direction={'row'}
+                    gap={10}
+                    justifyContent={"center"}
+                >
+                    <Button 
+                        variant="outlined"
+                        onClick={handleTelegramClick}
+                    >
+                        <Telegram/>
+                    </Button>
+                    <Button 
+                        variant="outlined"
+                        onClick={handleGithubClick}
+                    >
+                        <GitHub/>
+                    </Button>
                 </Stack>                
 
             </CardContent>

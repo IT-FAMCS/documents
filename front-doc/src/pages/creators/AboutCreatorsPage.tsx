@@ -9,10 +9,10 @@ export const AboutCreatorsPage = () => {
         <Stack
         margin={"auto"}
         useFlexGap
-        width={"100%"}
-        flexDirection={"column"}
+        width={"50%"}
+        flexDirection={"row"}
         alignItems={"center"}
-        gap={0}
+        gap={15}
         flexWrap={"wrap"}
         justifyContent={"space-between"}
         height={"calc(100vh - 120px)"}
