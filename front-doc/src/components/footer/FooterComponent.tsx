@@ -21,9 +21,11 @@ export const FooterComponent = () => {
       >
         <Button           
           variant="outlined"
-          sx={{
-            fontFamily: "Jost"
-          }}
+          style={{
+            borderColor: "#000000",
+            color: "#000000",
+            margin: "0 40px 0 0",
+          }}          
           onClick={handleButtonClick}
         >
           О создателях

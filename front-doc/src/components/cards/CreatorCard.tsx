@@ -1,6 +1,7 @@
 import { Card, CardContent, Typography, CardActionArea, Stack, Button } from "@mui/material";
 import "@fontsource/jost";
 import { GitHub, Telegram } from "@mui/icons-material";
+import {telegramPrefix} from "../../constants/otherConstants";
 
 interface CreatorCardInterface  {
     name: string,
@@ -11,14 +12,14 @@ interface CreatorCardInterface  {
 }
 
 
-export const CreatorCard: React.FC<CreatorCardInterface> = (props) => {
+export const CreatorCard: React.FC<CreatorCardInterface> = ({name, surname, role, telegram, github}: CreatorCardInterface) => {
 
     const handleTelegramClick = () => {
-        window.location.href="https://t.me/" + props.telegram;
+        window.location.href= telegramPrefix + telegram;
     }
 
     const handleGithubClick = () => {
-        window.location.href=props.github;
+        window.location.href=github;
     }
 
     return (
@@ -34,16 +35,14 @@ export const CreatorCard: React.FC<CreatorCardInterface> = (props) => {
                 }}
             >
                 <Typography
-                    variant="h5"
-                    fontFamily={"Jost"}
+                    variant="h5"                    
                 >
-                    {props.name} {" "} {props.surname}
+                    {[name, surname].join(' ')}
                 </Typography>
                 <Typography
-                    fontFamily={"Jost"}
                     variant="body1"
                 >
-                    {props.role}
+                    {role}
                 </Typography>
                 <Stack 
                     direction={'row'}

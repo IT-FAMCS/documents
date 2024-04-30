@@ -12,14 +12,15 @@ export const AboutCreatorsPage = () => {
         width={"50%"}
         flexDirection={"row"}
         alignItems={"center"}
-        gap={15}
+        gap={12}
         flexWrap={"wrap"}
-        justifyContent={"space-between"}
-        height={"calc(100vh - 120px)"}
+        justifyContent={"space-around"}
+        minHeight={"calc(100vh - 120px)"}
         >
         {creatorsInfo.map((info) => {
             return(
                 <CreatorCard
+                    key={info.surname}
                     name={info.name} 
                     surname={info.surname}
                     role={info.role}
