@@ -9,11 +9,11 @@ interface DocumentPageCardProps {
   description: string;
 }
 
-export const DocumentPageCard: React.FC<DocumentPageCardProps> = (props) => {
+export const DocumentPageCard: React.FC<DocumentPageCardProps> = ({path, header, description} : DocumentPageCardProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(props.path);
+    navigate(path);
   };
 
   return (
@@ -29,14 +29,14 @@ export const DocumentPageCard: React.FC<DocumentPageCardProps> = (props) => {
               fontFamily="Jost"
               fontWeight="700"
           >
-            {props.header}
+            {header}
           </Typography>
           <Typography
               variant="body1"
               fontFamily="Jost"
               fontSize="24"
           >
-            {props.description}
+            {description}
           </Typography>
         </CardContent>
       </CardActionArea>
