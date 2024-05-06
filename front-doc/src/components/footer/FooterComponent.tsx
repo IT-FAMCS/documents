@@ -1,4 +1,5 @@
 import Stack from "@mui/material/Stack";
+import "../../components/footer/Footer.css";
 
 export const FooterComponent = () => {
   return (

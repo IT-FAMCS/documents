@@ -1,9 +1,17 @@
+import React, { useContext } from "react";
 import Stack from "@mui/material/Stack";
 import logo from "../../Images/Raccoon.png";
 import { Button } from "@mui/material";
-import { Pix } from "@mui/icons-material";
+import "../../components/header/Header.css";
+import { ThemeContext } from "../../providers/ThemeProvider";
 
 export const HeaderComponent = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  const changeTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   return (
     <header className="header-component">
       <Stack
@@ -17,21 +25,11 @@ export const HeaderComponent = () => {
         <img className="logo" src={logo} alt="Raccoon logo"></img>
         <h1 className="header-text">Документооборот Проектного направления</h1>
         <div className="button-section">
-          <Button
-            style={{
-              borderColor: "#000000",
-              color: "#000000",
-              margin: "0 40px 0 0",
-            }}
-            variant="outlined"
-          >
-            account
+          <Button id="topic" variant="outlined" onClick={changeTheme}>
+            icon
           </Button>
-          <Button
-            style={{ borderColor: "#000000", color: "#000000" }}
-            variant="outlined"
-          >
-            change of topic
+          <Button id="account" variant="outlined">
+            account
           </Button>
         </div>
       </Stack>

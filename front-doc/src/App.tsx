@@ -1,30 +1,31 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/home/HomePage";
-import { ReportPage } from "./pages/ReportPage";
-import { ReleasePage } from "./pages/ReleasePage";
-import { OrderPage } from "./pages/OrderPage";
-import { ListPage } from "./pages/ListPage";
+import { ReportPage } from "./pages/other/ReportPage";
+import { ReleasePage } from "./pages/other/ReleasePage";
+import { OrderPage } from "./pages/other/OrderPage";
+import { ListPage } from "./pages/other/ListPage";
 import { HeaderComponent } from "./components/header/HeaderComponent";
 import { FooterComponent } from "./components/footer/FooterComponent";
+import { ThemeProvider } from "./providers/ThemeProvider";
 
 function App() {
   return (
-    <>
-      <HeaderComponent />
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="report" element={<ReportPage />} />
-          <Route path="release" element={<ReleasePage />} />
-          <Route path="order" element={<OrderPage />} />
-          <Route path="list" element={<ListPage />} />
-        </Routes>
-      </main>
-      <FooterComponent />
-    </>
+    <ThemeProvider>
+      <>
+        <HeaderComponent />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="report" element={<ReportPage />} />
+            <Route path="release" element={<ReleasePage />} />
+            <Route path="order" element={<OrderPage />} />
+            <Route path="list" element={<ListPage />} />
+          </Routes>
+        </main>
+        <FooterComponent />
+      </>
+    </ThemeProvider>
   );
 }
 
