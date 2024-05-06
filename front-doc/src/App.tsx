@@ -10,8 +10,12 @@ import { ReleasePage } from "./pages/documentPages/ReleasePage";
 import { OrderPage } from "./pages/documentPages/OrderPage";
 import { ListPage } from "./pages/documentPages/ListPage";
 import { LoginPage } from "./pages/login/LoginPage";
+
+import { AboutCreatorsPage } from "./pages/creators/AboutCreatorsPage";
+
 import Loader from "./components/loader/Loader";
 import { time } from "console";
+
 
 function App() {
   
@@ -43,6 +47,7 @@ function App() {
           <Route path="order" element={<OrderPage />} />
           <Route path="list" element={<ListPage />} />
           <Route path="login" element={<LoginPage />}/>
+          <Route path="creators" element={<AboutCreatorsPage/>}/>
         </Routes>
       </main>
       <FooterComponent />
