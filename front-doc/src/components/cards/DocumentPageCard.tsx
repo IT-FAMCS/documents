@@ -3,17 +3,17 @@ import "../../App.css";
 import { Card, CardContent, Typography, CardActionArea } from "@mui/material";
 import "@fontsource/jost";
 
-interface CardComponentProps {
+interface DocumentPageCardProps {
   path: string;
   header: string;
   description: string;
 }
 
-export const CardComponent: React.FC<CardComponentProps> = (props) => {
+export const DocumentPageCard: React.FC<DocumentPageCardProps> = ({path, header, description} : DocumentPageCardProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(props.path);
+    navigate(path);
   };
 
   return (
@@ -24,15 +24,19 @@ export const CardComponent: React.FC<CardComponentProps> = (props) => {
           sx={{ minWidth: 300, minHeight: 150 }}
         >
           <Typography
-            variant="h6"
-            sx={{ mb: 3 }}
-            fontFamily="Jost"
-            fontWeight="700"
+              variant="h6"
+              sx={{ mb: 3 }}
+              fontFamily="Jost"
+              fontWeight="700"
           >
-            {props.header}
+            {header}
           </Typography>
-          <Typography variant="body1" fontFamily="Jost" fontSize="24">
-            {props.description}
+          <Typography
+              variant="body1"
+              fontFamily="Jost"
+              fontSize="24"
+          >
+            {description}
           </Typography>
         </CardContent>
       </CardActionArea>
