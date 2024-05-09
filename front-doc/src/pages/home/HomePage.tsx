@@ -1,5 +1,5 @@
 import { CardComponent } from "../../components/cards/CardComponent";
-import { Box, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import { documentTypes } from "../../constants/documentTypes";
 
 export const HomePage = () => {

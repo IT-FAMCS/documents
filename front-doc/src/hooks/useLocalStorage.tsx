@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import internal from "stream";
 
-export const useLocalStrorage = (key: string, defData: any) => {
+export const useLocalStrorage = (
+  key: string,
+  defData: string
+): [string, React.Dispatch<React.SetStateAction<string>>] => {
   const [state, setState] = useState(() => {
     const localData = localStorage.getItem(key);
     return localData || defData;
