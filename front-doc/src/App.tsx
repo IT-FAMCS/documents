@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { HomePage } from "./pages/home/HomePage";
-import { ReportPage } from "./pages/other/ReportPage";
-import { ReleasePage } from "./pages/other/ReleasePage";
-import { OrderPage } from "./pages/other/OrderPage";
-import { ListPage } from "./pages/other/ListPage";
+import { ReportPage } from "./pages/ReportPage";
+import { ReleasePage } from "./pages/ReleasePage";
+import { OrderPage } from "./pages/OrderPage";
+import { ListPage } from "./pages/ListPage";
 import { ThemeProvider } from "./providers/ThemeProvider";
 import { HeaderComponent } from "./components/header/HeaderComponent";
 import { FooterComponent } from "./components/footer/FooterComponent";
@@ -34,21 +33,19 @@ function App() {
 
   return (
     <ThemeProvider>
-      <>
-        <HeaderComponent />
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="report" element={<ReportPage />} />
-            <Route path="release" element={<ReleasePage />} />
-            <Route path="order" element={<OrderPage />} />
-            <Route path="list" element={<ListPage />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="creators" element={<AboutCreatorsPage />} />
-          </Routes>
-        </main>
-        <FooterComponent />
-      </>
+      <HeaderComponent />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="report" element={<ReportPage />} />
+          <Route path="release" element={<ReleasePage />} />
+          <Route path="order" element={<OrderPage />} />
+          <Route path="list" element={<ListPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="creators" element={<AboutCreatorsPage />} />
+        </Routes>
+      </main>
+      <FooterComponent />
     </ThemeProvider>
   );
 }
