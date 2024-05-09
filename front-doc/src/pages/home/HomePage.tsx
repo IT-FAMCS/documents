@@ -1,5 +1,5 @@
-import { CardComponent } from "../../components/cards/CardComponent";
 import { Stack } from "@mui/material";
+import { DocumentPageCard } from "../../components/cards/DocumentPageCard";
 import { documentTypes } from "../../constants/documentTypes";
 
 export const HomePage = () => {
@@ -17,7 +17,7 @@ export const HomePage = () => {
     >
       {documentTypes.map((card) => {
         return (
-          <CardComponent
+          <DocumentPageCard
             path={card.path}
             header={card.header}
             description={card.description}
