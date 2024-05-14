@@ -1,1 +1,0 @@
-export const telegramPrefix = 'https://t.me/';
