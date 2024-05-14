@@ -16,5 +16,5 @@ export default  function useMembers () {
         return await fetchPost(MEMBERS_DELETE, id);
     }
 
-    return {getMembers, addMember, deleteMember}
+    return { getMembers, addMember, deleteMember }
 }
