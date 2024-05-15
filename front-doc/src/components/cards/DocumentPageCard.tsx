@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 import "../../App.css";
 import { Card, CardContent, Typography, CardActionArea } from "@mui/material";
 import "@fontsource/jost";
-import { DocumentPageCardProps } from "../../interfaces/cardsInterfaces";
+import { DocumentsPageCard } from "../../interfaces/cardsInterfaces";
 
-export const DocumentPageCard: React.FC<DocumentPageCardProps> = ({path, header, description} : DocumentPageCardProps) => {
+export const DocumentPageCard: React.FC<DocumentsPageCard> = ({path, header, description} : DocumentsPageCard) => {
   const navigate = useNavigate();
 
   const handleClick = () => {

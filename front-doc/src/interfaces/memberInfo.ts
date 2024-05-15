@@ -1,3 +1,7 @@
 export interface MemberInfo {
-    name: string;
+  name: string;
+  surname: string;
+  fathername: string;
+  course: number;
+  group: number;
 }
