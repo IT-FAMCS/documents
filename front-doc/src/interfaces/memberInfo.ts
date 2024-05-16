@@ -4,4 +4,5 @@ export interface MemberInfo {
   fathername: string;
   course: number;
   group: number;
+  departments: string[];
 }

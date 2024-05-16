@@ -8,13 +8,17 @@ export default  function useMembers () {
         return await fetchGet(MEMBERS_GET);
     }
 
+    async function getMemberById({id} : {id:number}) {
+        return await fetchGet(MEMBERS_GET + '/' +id);
+    }
+
     async function addMember({data}: {data: MemberInfo}) {
         return await fetchPost(MEMBERS_ADD, data);
     }
 
-    async function deleteMember({id} : {id:string}) {
+    async function deleteMember({id} : {id: number}) {
         return await fetchPost(MEMBERS_DELETE, id);
     }
 
-    return { getMembers, addMember, deleteMember }
+    return { getMembers, addMember, deleteMember, getMemberById }
 }
