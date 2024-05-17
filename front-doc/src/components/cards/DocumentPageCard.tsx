@@ -4,7 +4,11 @@ import { Card, CardContent, Typography, CardActionArea } from "@mui/material";
 import "@fontsource/jost";
 import { DocumentsPageCard } from "../../interfaces/cardsInterfaces";
 
-export const DocumentPageCard: React.FC<DocumentsPageCard> = ({path, header, description} : DocumentsPageCard) => {
+export const DocumentPageCard: React.FC<DocumentsPageCard> = ({
+  path,
+  header,
+  description,
+}: DocumentsPageCard) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -19,18 +23,14 @@ export const DocumentPageCard: React.FC<DocumentsPageCard> = ({path, header, des
           sx={{ minWidth: 300, minHeight: 150 }}
         >
           <Typography
-              variant="h6"
-              sx={{ mb: 3 }}
-              fontFamily="Jost"
-              fontWeight="700"
+            variant="h6"
+            sx={{ mb: 3 }}
+            fontFamily="Jost"
+            fontWeight="700"
           >
             {header}
           </Typography>
-          <Typography
-              variant="body1"
-              fontFamily="Jost"
-              fontSize="24"
-          >
+          <Typography variant="body1" fontFamily="Jost" fontSize="24">
             {description}
           </Typography>
         </CardContent>
