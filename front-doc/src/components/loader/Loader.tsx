@@ -7,7 +7,7 @@ function Loader() {
           <img alt="loading" width="400" height="400" src={Raccoon} />
           <figcaption>Загрузка...</figcaption>
         </figure>
-        </div>
+      </div>
     </>
   );
 }

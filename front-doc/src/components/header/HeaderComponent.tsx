@@ -6,8 +6,6 @@ import "../../components/header/Header.css";
 import { ThemeContext } from "../../providers/ThemeProvider";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-import { Navigate } from "react-router-dom";
-import App from "../../App";
 
 export const HeaderComponent = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -36,7 +34,7 @@ export const HeaderComponent = () => {
             Home
           </Button>
           <Button id="account" variant="outlined">
-            account
+            Account
           </Button>
         </div>
       </Stack>
