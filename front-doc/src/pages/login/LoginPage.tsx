@@ -19,49 +19,65 @@ export const LoginPage = () => {
     }
 
     return(        
-
-        <form 
-            style={{width: '100'}}
-            onSubmit={loginSubmit}            
-        >
-
-            <TextField
-                error={error}
-                fullWidth
-                label="Login"
-                required
-                onChange={(e) => setLogin(e.target.value)}
-                margin="normal"
-                
-            />
-            <TextField
-                error={error}
-                fullWidth 
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            <IconButton onClick={handleShowPassChange}>
-                            {showPassword ? <Visibility/> : <VisibilityOff/>}
-                        </IconButton>
-                        </InputAdornment>
-                    )
+        <div className="login">
+           
+            <form 
+                style={{
+                    width: '100',
+                    
                 }}
-                label="Password"
-                type={showPassword ? "text" : "password"}
-                required
-                onChange={(e) => setPassword(e.target.value)}
-                margin="normal"
-                className={error ? "error" : ""}
-                
-            >                
-            </TextField>
-            <Button 
-                fullWidth
-                variant="contained"
-                type="submit"
+                onSubmit={loginSubmit}
+                            
             >
-                Войти
-            </Button>
-        </form>
+                 <h1 
+                    style={{
+                        textAlign: 'center'
+                    }}
+                 >
+                    Вход</h1>
+                <TextField
+                    
+                    error={error}
+                    fullWidth
+                    label="Login"
+                    required
+                    onChange={(e) => setLogin(e.target.value)}
+                    margin="normal"
+                    
+                />
+                <TextField
+                    
+                    error={error}
+                    fullWidth 
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <IconButton onClick={handleShowPassChange}>
+                                {showPassword ? <Visibility/> : <VisibilityOff/>}
+                            </IconButton>
+                            </InputAdornment>
+                        )
+                    }}
+                    label="Password"
+                    type={showPassword ? "text" : "password"}
+                    required
+                    onChange={(e) => setPassword(e.target.value)}
+                    margin="normal"
+                    className={error ? "error" : ""}
+                    
+                >                
+                </TextField>
+                <Button 
+                    fullWidth
+                    variant="contained"
+                    type="submit"
+                    style={{
+                        height: '50px'
+                    }}
+                >
+                    Войти
+                </Button>
+            </form>
+        </div>
     )
 } 

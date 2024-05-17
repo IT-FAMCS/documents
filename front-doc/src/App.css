@@ -36,18 +36,27 @@ body * {
 }
 
 main {
-  margin-top: 60px;
+    margin-top: 60px;
 }
 
 .loading {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .loading figcaption {
   text-align: center;
   font-size: 56px;
 }
+
+.login {
+    width: 80vw;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
