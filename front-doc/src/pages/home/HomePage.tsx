@@ -1,5 +1,5 @@
+import { Stack } from "@mui/material";
 import { DocumentPageCard } from "../../components/cards/DocumentPageCard";
-import { Box, Stack } from "@mui/material";
 import { documentTypes } from "../../constants/documentTypes";
 
 export const HomePage = () => {

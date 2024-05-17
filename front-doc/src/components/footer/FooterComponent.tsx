@@ -1,15 +1,15 @@
 import { Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
+import "../../components/footer/Footer.css";
 import { useNavigate } from "react-router-dom";
 
 export const FooterComponent = () => {
-
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/creators")
-  }
-  
+    navigate("/creators");
+  };
+
   return (
     <footer className="footer-component">
       <Stack
@@ -19,15 +19,7 @@ export const FooterComponent = () => {
         direction={"column"}
         spacing={2}
       >
-        <Button           
-          variant="outlined"
-          style={{
-            borderColor: "#000000",
-            color: "#000000",
-            margin: "0 40px 0 0",
-          }}          
-          onClick={handleButtonClick}
-        >
+        <Button id="creators" variant="outlined" onClick={handleButtonClick}>
           О создателях
         </Button>
       </Stack>
