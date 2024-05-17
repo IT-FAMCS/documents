@@ -19,15 +19,7 @@ export const FooterComponent = () => {
         direction={"column"}
         spacing={2}
       >
-        <Button
-          variant="outlined"
-          style={{
-            borderColor: "#000000",
-            color: "#000000",
-            margin: "0 40px 0 0",
-          }}
-          onClick={handleButtonClick}
-        >
+        <Button id="creators" variant="outlined" onClick={handleButtonClick}>
           О создателях
         </Button>
       </Stack>

@@ -4,3 +4,9 @@
   width: 100%;
   height: 60px;
 }
+
+#creators {
+  border-color: var(--footer-text-color);
+  color: var(--footer-text-color);
+  margin-right: 40px;
+}

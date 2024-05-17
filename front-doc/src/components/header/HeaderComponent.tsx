@@ -4,6 +4,8 @@ import logo from "../../Images/Raccoon.png";
 import { Button } from "@mui/material";
 import "../../components/header/Header.css";
 import { ThemeContext } from "../../providers/ThemeProvider";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 export const HeaderComponent = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -26,7 +28,7 @@ export const HeaderComponent = () => {
         <h1 className="header-text">Документооборот Проектного направления</h1>
         <div className="button-section">
           <Button id="topic" variant="outlined" onClick={changeTheme}>
-            icon
+            {theme === "dark" ? <Brightness4Icon /> : <Brightness7Icon />}
           </Button>
           <Button id="account" variant="outlined">
             account
