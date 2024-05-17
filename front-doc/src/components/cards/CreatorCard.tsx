@@ -1,21 +1,16 @@
 import { Card, CardContent, Typography, CardActionArea, Stack, Button } from "@mui/material";
 import "@fontsource/jost";
 import { GitHub, Telegram } from "@mui/icons-material";
-import {telegramPrefix} from "../../constants/otherConstants";
-
-interface CreatorCardInterface  {
-    name: string,
-    surname: string,
-    role: string,  
-    telegram: string, 
-    github: string
-}
+import {TELEGRAM_PREFIX} from "../../constants/secondaryUrls";
+import { CreatorsCard } from "../../interfaces/cardsInterfaces";
 
 
-export const CreatorCard: React.FC<CreatorCardInterface> = ({name, surname, role, telegram, github}: CreatorCardInterface) => {
+
+
+export const CreatorCard: React.FC<CreatorsCard> = ({name, surname, role, telegram, github}: CreatorsCard) => {
 
     const handleTelegramClick = () => {
-        window.location.href= telegramPrefix + telegram;
+        window.location.href= TELEGRAM_PREFIX + telegram;
     }
 
     const handleGithubClick = () => {
