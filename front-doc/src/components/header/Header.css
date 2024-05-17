@@ -19,10 +19,16 @@
   color: var(--header-text-color);
 }
 
+#Home-Back {
+  border-color: var(--header-text-color);
+  color: var(--header-text-color);
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 #topic {
   border-color: var(--header-text-color);
   color: var(--header-text-color);
-  margin-right: 40px;
 }
 
 #account {
