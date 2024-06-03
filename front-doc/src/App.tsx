@@ -3,7 +3,7 @@ import "./App.css";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { HomePage } from "./pages/home/HomePage";
 import { ReportPage } from "./pages/ReportPage";
-import { ReleasePage } from "./pages/ReleasePage";
+import { ReleasePage } from "./pages/documentForms/release/ReleasePage";
 import { OrderPage } from "./pages/OrderPage";
 import { ListPage } from "./pages/ListPage";
 import { ThemeProvider } from "./providers/ThemeProvider";
@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 500);
     return () => {
       setLoading(true);
       clearTimeout(timeout);
