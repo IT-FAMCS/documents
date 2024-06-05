@@ -27,7 +27,7 @@ export const ReleasePage = () => {
     }
 
     const blankData = {
-      date: dayjs("2022-04-01"),
+      date: dayjs(),
       timeFrom: dayjs("2022-04-17T8:15"),
       timeTo: dayjs("2022-04-17T14:20"),
       fullDay: false,
@@ -120,7 +120,7 @@ export const ReleasePage = () => {
 
     return (
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingTop: 5 }}>
           {releaseData.map((release, index) => (
             <Box key={index} sx={{ display: 'flex', flexDirection: 'row', gap: 2, alignItems: 'center' }}>
               <DatePicker
@@ -160,7 +160,7 @@ export const ReleasePage = () => {
                 label="Весь день"
               />
               <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel id={`demo-multiple-chip-label-${index}`}>Chip</InputLabel>
+                <InputLabel id={`demo-multiple-chip-label-${index}`}>Кому</InputLabel>
                 <Select
                   labelId={`demo-multiple-chip-label-${index}`}
                   id={`demo-multiple-chip-${index}`}
