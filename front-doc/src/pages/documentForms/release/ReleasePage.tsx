@@ -200,6 +200,7 @@ export const ReleasePage = () => {
             onClick={handleDeleteDate}
             variant='outlined'
             sx={{ width: '50%' }}
+            disabled={releaseData.length === 1}
           >
             <RemoveIcon />
           </Button>
