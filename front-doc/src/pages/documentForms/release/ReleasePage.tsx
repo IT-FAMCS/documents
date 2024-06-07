@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Chip, FormControl, FormControlLabel, InputAdornment, InputLabel, ListSubheader, MenuItem, OutlinedInput, Select, SelectChangeEvent, TextField, Theme, useTheme } from '@mui/material';
+import { Box, Button, Checkbox, Chip, Collapse, FormControl, FormControlLabel, InputAdornment, InputLabel, ListSubheader, MenuItem, OutlinedInput, Select, SelectChangeEvent, TextField, Theme, useTheme } from '@mui/material';
 import { DatePicker, LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
@@ -39,6 +39,18 @@ export const ReleasePage = () => {
     const [title, setTitle] = useState('')
     const [responsible, setResponsible] = useState('')
     const [releaseData, setReleaseData] = useState<Release[]>([blankData])
+    const [allMembers, setAllMembers] = useState([
+        'Oliver Hansen',
+        'Van Henry',
+        'April Tucker',
+        'Ralph Hubbard',
+        'Omar Alexander',
+        'Carlos Abbott',
+        'Miriam Wagner',
+        'Bradley Wilkerson',
+        'Virginia Andrews',
+        'Kelly Snyder',
+    ])
 
     const handleDateChange = (index: number, newDate: Dayjs | null) => {
         const newData = [...releaseData]
@@ -62,13 +74,6 @@ export const ReleasePage = () => {
         setReleaseData(newData);
     };
 
-    
-    const handleMilitaryChange = (index: number, event: any) => {
-      const newData = [...releaseData];
-      newData[index].military = event.target.checked;
-      setReleaseData(newData);
-  };
-
     const handleMembersChange = (index: number, event: SelectChangeEvent<string[]>) => {
         const newMembers = event.target.value as string[];
         const newData = [...releaseData];
@@ -87,7 +92,7 @@ export const ReleasePage = () => {
 
     const handleAddDate = () => {
         const newData = [...releaseData]
-        newData.push(blankData)
+        newData.push({ ...blankData, date: dayjs() })
         setReleaseData(newData)
     }
 
@@ -105,18 +110,32 @@ export const ReleasePage = () => {
       setResponsible(event.target.value)
     }
 
-    const members = [
-        'Oliver Hansen',
-        'Van Henry',
-        'April Tucker',
-        'Ralph Hubbard',
-        'Omar Alexander',
-        'Carlos Abbott',
-        'Miriam Wagner',
-        'Bradley Wilkerson',
-        'Virginia Andrews',
-        'Kelly Snyder',
-    ];
+    const [showInput, setShowInput] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+
+    const handleButtonClick = () => {
+      setShowInput(true);
+    };
+
+    const handleInputChange = (event: any) => {
+      setInputValue(event.target.value);
+    };
+
+    const handleInputKeyPress = (event: any, index: number) => {
+      if (event.key === 'Enter') {
+        setShowInput(false);
+        if (inputValue.trim() === '') return;
+
+        const newData = [...releaseData];
+        const newMember = inputValue.trim();
+
+        newData[index].members.push(newMember);
+
+        setAllMembers([...allMembers, newMember]);
+        setReleaseData(newData);
+        setInputValue('');
+      }
+    };
 
     return (
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -173,19 +192,40 @@ export const ReleasePage = () => {
                   renderValue={(selected) => (
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                       {selected.map((value) => (
-                      <Chip key={value} label={value} />
+                        <Chip
+                          key={value}
+                          label={value}
+                          
+                        />
                       ))}
                     </Box>
                   )}
                   MenuProps={MenuProps}
                 >
-                {members.map((option, i) => (
+                {allMembers.map((option, i) => (
                   <MenuItem key={i} value={option}>
                     {option}
                   </MenuItem>
                 ))}
-              </Select>
+              </Select>              
             </FormControl>
+            <Button 
+              variant="outlined"
+              onClick={handleButtonClick}
+              sx={{width: 5}}>
+              <AddIcon />
+            </Button>
+            <Collapse in={showInput}>
+              <Box sx={{ marginTop: 2 }}>
+                <TextField
+                  autoFocus
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  onKeyPress={(event) => handleInputKeyPress(event, index)}
+                  placeholder="Введите текст"
+                />
+              </Box>
+            </Collapse>
           </Box>
           ))}
           <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, alignItems: 'center' }}>
