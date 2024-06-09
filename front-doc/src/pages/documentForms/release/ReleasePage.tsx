@@ -1,10 +1,11 @@
-import { Box, Button, Checkbox, Chip, Collapse, FormControl, FormControlLabel, InputAdornment, InputLabel, ListSubheader, MenuItem, OutlinedInput, Select, SelectChangeEvent, TextField, Theme, useTheme } from '@mui/material';
+import { Box, Button, Checkbox, Chip, Collapse, FormControl, FormControlLabel, InputAdornment, InputLabel, ListSubheader, MenuItem, OutlinedInput, Select, SelectChangeEvent, TextField, Theme, Tooltip, useTheme } from '@mui/material';
 import { DatePicker, LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 export const ReleasePage = () => {
 
@@ -139,7 +140,7 @@ export const ReleasePage = () => {
 
     return (
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, paddingTop: 5 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, padding: 5 }}>
           {releaseData.map((release, index) => (
             <Box key={index} sx={{ display: 'flex', flexDirection: 'row', gap: 2, alignItems: 'center' }}>
               <DatePicker
@@ -213,10 +214,11 @@ export const ReleasePage = () => {
               variant="outlined"
               onClick={handleButtonClick}
               sx={{width: 5}}>
-              <AddIcon />
+              <PersonAddIcon />
             </Button>
             <Collapse in={showInput}>
-              <Box sx={{ marginTop: 2 }}>
+              <Box>
+                <Tooltip  title='Нажмите Enter чтобы добавить в список для освобожения'>
                 <TextField
                   autoFocus
                   value={inputValue}
@@ -224,6 +226,7 @@ export const ReleasePage = () => {
                   onKeyPress={(event) => handleInputKeyPress(event, index)}
                   placeholder="Введите текст"
                 />
+                </Tooltip>
               </Box>
             </Collapse>
           </Box>
