@@ -5,6 +5,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@fileforge/client": "^0.1.15",
+    "@fileforge/react-print": "^0.1.141",
     "@fontsource/jost": "^5.0.17",
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
@@ -48,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "node-polyfill-webpack-plugin": "^4.0.0"
   }
 }
