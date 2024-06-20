@@ -68,10 +68,10 @@ class user(AbstractBaseUser, PermissionsMixin):
 
         token = jwt.encode({
             'id': self.pk,
-            'exp': int(dt.strftime('%S'))
+            'exp': int(dt.timestamp()),
         }, settings.SECRET_KEY, algorithm='HS256')
 
-        return token.encode('utf-8')
+        return token
     @property
     def token(self):
         return self._generate_jwt_token()
