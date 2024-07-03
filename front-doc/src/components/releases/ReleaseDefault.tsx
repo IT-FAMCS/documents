@@ -1,8 +1,6 @@
-import { Footnote, PageBottom, Tailwind } from "@fileforge/react-print";
-
 export function ReleaseDefault() {
   return (
-    <Tailwind>
+    <>
       <div>
         <div className="flex justify-between items-end pb-4 mb-8">
           <div>
@@ -51,7 +49,6 @@ export function ReleaseDefault() {
         <p className="p-0 leading-5">
           All items below correspond to work completed in the month of January
           2024. Payment is due within 15 days of receipt of this invoice.
-          <Footnote>This includes non-business days.</Footnote>
         </p>
 
         <table className="w-full my-12">
@@ -92,11 +89,9 @@ export function ReleaseDefault() {
           our new cloud offering.
         </div>
 
-        <PageBottom>
-          <div className="h-px bg-gray-300 my-4" />
-          <div className="text-gray-400 text-sm">Invoice #1234</div>
-        </PageBottom>
+        <div className="h-px bg-gray-300 my-4" />
+        <div className="text-gray-400 text-sm">Invoice #1234</div>
       </div>
-    </Tailwind>
+    </>
   );
 }

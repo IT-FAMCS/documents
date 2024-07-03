@@ -29,8 +29,6 @@ import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import { compile } from "@fileforge/react-print";
-import { FileforgeClient } from "@fileforge/client";
 import { ReleaseDefault } from "../../../components/releases/ReleaseDefault";
 
 export const ReleasePage = () => {
@@ -117,28 +115,6 @@ export const ReleasePage = () => {
       title: title,
       responsible: responsible,
     });
-    const HTML = await compile(<ReleaseDefault />);
-    const ff = new FileforgeClient({
-      apiKey: () => "146bf4e4-c185-40bc-b370-fb771f92f6f4",
-    });
-    (async () => {
-      try {
-        const pdf = await ff.pdf.generate(
-          [new File([HTML], "index.html", { type: "text/html" })],
-          {
-            options: {
-              host: true,
-            },
-          },
-          {
-            timeoutInSeconds: 30,
-          }
-        );
-        window.open(pdf.url, "_blank");
-      } catch (error) {
-        console.error("Error during PDF conversion:", error);
-      }
-    })();
   };
 
   const handleAddDate = () => {
