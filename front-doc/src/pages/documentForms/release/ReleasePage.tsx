@@ -29,7 +29,9 @@ import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import { ReleaseDefault } from "../../../components/releases/ReleaseDefault";
+import ReleaseDefault from "../../../components/releases/ReleaseDefault";
+import { ReleaseMilitary } from "../../../components/releases/ReleaseMilitary";
+import jsPDF from "jspdf";
 
 export const ReleasePage = () => {
   const MenuProps = {
@@ -115,6 +117,7 @@ export const ReleasePage = () => {
       title: title,
       responsible: responsible,
     });
+    ReleaseDefault();
   };
 
   const handleAddDate = () => {

@@ -1,97 +1,268 @@
-export function ReleaseDefault() {
-  return (
-    <>
-      <div>
-        <div className="flex justify-between items-end pb-4 mb-8">
-          <div>
-            <h1 className="text-2xl font-bold">Invoice #1234</h1>
-            <p className="text-xs">January 1, 2025</p>
-          </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            x="0"
-            y="0"
-            enableBackground="new 0 0 46.15 9.31"
-            version="1.1"
-            viewBox="0 0 46.15 9.31"
-            xmlSpace="preserve"
-            fill="black"
-          >
-            <path d="M10 9.13V2.55h1.83v.91c.35-.62 1.13-1.09 2.07-1.09.71 0 1.32.24 1.81.71s.74 1.15.74 2.03v4.02h-1.88V5.6c0-.96-.5-1.5-1.28-1.5-.85 0-1.42.62-1.42 1.55v3.48H10zM23.84 6.48h-4.83c.23.83.83 1.24 1.79 1.24.74 0 1.43-.22 2.05-.64l.74 1.28c-.8.61-1.76.91-2.88.91-1.16 0-2.05-.34-2.67-1-.61-.66-.92-1.47-.92-2.45 0-1 .32-1.81.96-2.46.64-.66 1.48-.98 2.51-.98.97 0 1.76.3 2.39.89.62.59.94 1.39.94 2.41-.01.23-.04.5-.08.8zM19 5.13h3.09c-.18-.76-.73-1.22-1.51-1.22-.76 0-1.38.46-1.58 1.22zM29.43 0h1.88v9.13h-1.82v-.71c-.52.59-1.16.88-1.96.88-.92 0-1.69-.32-2.31-.98-.61-.66-.92-1.47-.92-2.47 0-.98.31-1.8.92-2.46.62-.66 1.39-1 2.31-1 .74 0 1.38.26 1.89.8V0zm-.39 4.6c-.31-.34-.71-.5-1.2-.5s-.89.17-1.21.5c-.31.34-.47.74-.47 1.22 0 .49.16.91.47 1.25.32.34.72.5 1.21.5s.89-.17 1.2-.5c.32-.34.48-.76.48-1.25 0-.47-.15-.88-.48-1.22zM33.03 8.31c-.66-.67-.98-1.5-.98-2.47s.32-1.8.98-2.46c.66-.67 1.51-1.01 2.55-1.01 1.04 0 1.91.34 2.57 1.01.66.66 1 1.49 1 2.46s-.34 1.8-1 2.47c-.66.66-1.52 1-2.57 1-1.04 0-1.89-.34-2.55-1zm3.74-3.68c-.32-.34-.72-.5-1.19-.5s-.86.17-1.19.5c-.32.32-.48.73-.48 1.2 0 .49.16.9.48 1.24.32.32.72.49 1.19.49s.86-.17 1.19-.49c.32-.34.49-.74.49-1.24 0-.47-.17-.88-.49-1.2zM40.5 8.31c-.65-.65-.97-1.47-.97-2.48s.32-1.83.98-2.47c.66-.65 1.5-.97 2.54-.97 1.36 0 2.55.67 3.09 1.87l-1.5.8c-.38-.62-.9-.94-1.56-.94-.49 0-.89.17-1.21.49-.32.32-.48.73-.48 1.21 0 .49.16.91.47 1.24.32.32.72.48 1.2.48.66 0 1.27-.38 1.55-.92l1.52.9c-.58 1.07-1.74 1.75-3.12 1.75-1.02 0-1.86-.32-2.51-.96zM9.26 4.7c0-1.29-.44-2.36-1.34-3.25C7.03.55 5.94.1 4.63.1c-1.3 0-2.39.45-3.29 1.35C.45 2.34 0 3.43 0 4.71c0 .37.05.72.12 1.05l4.3-3.39h2.22v6.46c.47-.22.9-.5 1.29-.88.89-.89 1.33-1.97 1.33-3.25z"></path>
-            <path d="M1.49 8.09c.62.56 1.34.94 2.17 1.1v-2.8l-2.17 1.7z"></path>
-          </svg>
-        </div>
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import { format } from "date-fns";
 
-        <div className="text-right">
-          <p className="p-0 mb-1">
-            <b>Onedoc, Inc</b>
-          </p>
-          <p className="p-0 mb-1">1600 Pennsylvania Avenue NW,</p>
-          <p className="p-0 mb-1">Washington,</p>
-          <p className="p-0 mb-1">DC 20500,</p>
-          <p className="p-0 mb-1">United States of America</p>
-        </div>
+const ReleaseDefault = () => {
+  // Sample vendor data
+  const vendorData = {
+    vendorName: "Velavan B",
+    vendorAddress: "14/203, Kallakulam, Seenapuram",
+    vendorPinCode: "638057",
+    contactPerson: "Santhosh D",
+    contactPersonMobNo: "8993298712",
+  };
 
-        <div className="h-px bg-gray-300 my-4" />
+  // Sample items data
+  const itemsData = [
+    {
+      itemName: "Water Tanks",
+      quantity: "15",
+      uom: "Liters",
+      unitPrice: "1200",
+      total: (15 * 1200).toString(),
+    },
+    {
+      itemName: "Laptops",
+      quantity: "5",
+      uom: "Pieces",
+      unitPrice: "25000",
+      total: (5 * 25000).toString(),
+    },
+    {
+      itemName: "Coffee Mugs",
+      quantity: "50",
+      uom: "Pieces",
+      unitPrice: "50",
+      total: (50 * 50).toString(),
+    },
+    {
+      itemName: "Desk Chairs",
+      quantity: "8",
+      uom: "Pieces",
+      unitPrice: "8000",
+      total: (8 * 8000).toString(),
+    },
+    {
+      itemName: "LED TVs",
+      quantity: "3",
+      uom: "Units",
+      unitPrice: "30000",
+      total: (3 * 30000).toString(),
+    },
+    {
+      itemName: "Bookshelves",
+      quantity: "2",
+      uom: "Units",
+      unitPrice: "5000",
+      total: (2 * 5000).toString(),
+    },
+    {
+      itemName: "Smartphones",
+      quantity: "10",
+      uom: "Pieces",
+      unitPrice: "15000",
+      total: (10 * 15000).toString(),
+    },
+    {
+      itemName: "Desk Lamps",
+      quantity: "20",
+      uom: "Pieces",
+      unitPrice: "100",
+      total: (20 * 100).toString(),
+    },
+    {
+      itemName: "Headphones",
+      quantity: "25",
+      uom: "Pairs",
+      unitPrice: "500",
+      total: (25 * 500).toString(),
+    },
+    {
+      itemName: "Backpacks",
+      quantity: "12",
+      uom: "Pieces",
+      unitPrice: "800",
+      total: (12 * 800).toString(),
+    },
+    {
+      itemName: "Fitness Trackers",
+      quantity: "7",
+      uom: "Pieces",
+      unitPrice: "1200",
+      total: (7 * 1200).toString(),
+    },
+    {
+      itemName: "Digital Cameras",
+      quantity: "4",
+      uom: "Units",
+      unitPrice: "15000",
+      total: (4 * 15000).toString(),
+    },
+    {
+      itemName: "Portable Speakers",
+      quantity: "18",
+      uom: "Pieces",
+      unitPrice: "800",
+      total: (18 * 800).toString(),
+    },
+    {
+      itemName: "Sunglasses",
+      quantity: "30",
+      uom: "Pairs",
+      unitPrice: "200",
+      total: (30 * 200).toString(),
+    },
+    {
+      itemName: "Running Shoes",
+      quantity: "15",
+      uom: "Pairs",
+      unitPrice: "1000",
+      total: (15 * 1000).toString(),
+    },
+    {
+      itemName: "Gaming Consoles",
+      quantity: "6",
+      uom: "Units",
+      unitPrice: "25000",
+      total: (6 * 25000).toString(),
+    },
+    {
+      itemName: "Wristwatches",
+      quantity: "9",
+      uom: "Pieces",
+      unitPrice: "3000",
+      total: (9 * 3000).toString(),
+    },
+    {
+      itemName: "Power Banks",
+      quantity: "20",
+      uom: "Pieces",
+      unitPrice: "500",
+      total: (20 * 500).toString(),
+    },
+    {
+      itemName: "Bluetooth Earbuds",
+      quantity: "22",
+      uom: "Pairs",
+      unitPrice: "1000",
+      total: (22 * 1000).toString(),
+    },
+    {
+      itemName: "Home Printers",
+      quantity: "3",
+      uom: "Units",
+      unitPrice: "8000",
+      total: (3 * 8000).toString(),
+    },
+  ];
 
-        <div>
-          <p className="p-0 mb-1">
-            <b>Bill to:</b>
-          </p>
-          <p className="p-0 mb-1">Titouan LAUNAY</p>
-          <p className="p-0 mb-1">72 Faxcol Dr Gotahm City,</p>
-          <p className="p-0 mb-1">NJ 12345,</p>
-          <p className="p-0 mb-1">United States of America</p>
-        </div>
+  const pdf = new jsPDF();
+  // Set document properties
+  pdf.setProperties({
+    title: "Request For Quotation",
+  });
 
-        <div className="h-px bg-gray-300 my-4" />
+  // Add images and text to the PDF
+  const callImage = "/Calling.png";
+  const imageUrl = "/aalam.png";
+  pdf.addImage(imageUrl, "JPEG", 10, 5, 40, 12);
+  pdf.setFontSize(10);
+  pdf.setFont("custom", "bold");
+  pdf.text("REQUEST FOR QUOTATION", 150, 12);
 
-        <p className="p-0 leading-5">
-          All items below correspond to work completed in the month of January
-          2024. Payment is due within 15 days of receipt of this invoice.
-        </p>
+  // Line width in units (you can adjust this)
+  pdf.setLineWidth(0.1);
 
-        <table className="w-full my-12">
-          <tr className="border-b border-gray-300">
-            <th className="text-left font-bold py-2">Item</th>
-            <th className="text-left font-bold py-2">Description</th>
-            <th className="text-left font-bold py-2">Unit Price</th>
-            <th className="text-left font-bold py-2">Quantity</th>
-            <th className="text-left font-bold py-2">Amount</th>
-          </tr>
-
-          <tr className="border-b border-gray-300">
-            <td className="py-2">1</td>
-            <td className="py-2">Onedoc Startup Subscription</td>
-            <td className="py-2">$100</td>
-            <td className="py-2">1</td>
-            <td className="py-2">$100</td>
-          </tr>
-          <tr className="border-b border-gray-300">
-            <td className="py-2">2</td>
-            <td className="py-2">Onedoc support</td>
-            <td className="py-2">$0</td>
-            <td className="py-2">1</td>
-            <td className="py-2">$0</td>
-          </tr>
-
-          <tr className="border-b border-gray-300">
-            <th className="text-left font-bold py-2"></th>
-            <th className="text-left font-bold py-2">Total</th>
-            <th className="text-left font-bold py-2"></th>
-            <th className="text-left font-bold py-2"></th>
-            <th className="text-left font-bold py-2">$100</th>
-          </tr>
-        </table>
-
-        <div className="bg-blue-100 p-3 rounded-md border-blue-300 text-blue-800 text-sm">
-          On January 1st 2024, Onedoc users will be upgraded free of charge to
-          our new cloud offering.
-        </div>
-
-        <div className="h-px bg-gray-300 my-4" />
-        <div className="text-gray-400 text-sm">Invoice #1234</div>
-      </div>
-    </>
+  // Line color (RGB)
+  pdf.setDrawColor(200, 200, 200);
+  pdf.line(10, 18, 200, 18);
+  pdf.text("Contact Person", 13, 23);
+  pdf.setFont("custom", "normal");
+  pdf.text("Nithish Kumar CP", 13, 28);
+  pdf.addImage(callImage, "PNG", 13, 29, 3, 3);
+  pdf.text("9078382732", 16, 32);
+  pdf.setFont("Newsreader", "bold");
+  pdf.text("RFQ No      :", 130, 23);
+  pdf.text("RFQ Date   :", 130, 27);
+  pdf.text("Due Date    :", 130, 31);
+  pdf.setFont("Newsreader", "normal");
+  pdf.text("RFQ20240092", 155, 23);
+  pdf.text(format(new Date(), "MMM dd, yyyy"), 155, 27);
+  pdf.text(
+    format(new Date("2024-02-08 00:00:00.000 +0530"), "MMM dd, yyyy"),
+    155,
+    31
   );
-}
+  pdf.line(10, 34, 200, 34);
+  pdf.setFont("Newsreader", "bold");
+  pdf.text("To", 13, 39);
+  pdf.setFont("Newsreader", "bold");
+  pdf.text("Purchase Centre Address :", 130, 39);
+  pdf.setFont("Newsreader", "normal");
+  pdf.text("Head Office", 130, 44);
+  pdf.text("CHENNAI", 130, 48);
+
+  // Generate the vendor-specific content
+  pdf.setFont("Newsreader", "bold");
+  pdf.text(`${vendorData?.vendorName}`, 13, 44);
+  pdf.text(`${vendorData?.vendorAddress}`, 13, 48);
+  pdf.setFont("Newsreader", "normal");
+  pdf.text(`P.O BOX : ${vendorData?.vendorPinCode}`, 13, 52);
+  pdf.setFont("Newsreader", "bold");
+  pdf.text("Contact Person", 13, 56);
+  pdf.setFont("Newsreader", "normal");
+  pdf.text(`${vendorData?.contactPerson}`, 13, 60);
+  pdf.addImage(callImage, "PNG", 13, 61, 3, 3);
+  pdf.text(`  ${vendorData?.contactPersonMobNo || "N/A"}`, 16, 64);
+  pdf.setFont("Newsreader", "bold");
+  pdf.text("Dear Sir,", 13, 72);
+  pdf.setFont("Newsreader", "normal");
+  pdf.text(
+    "Please send your most competitive offer/mentioning your Terms & Conditions before the due date. You can send the same to \nthe above mentioned e-mail/fax",
+    13,
+    79
+  );
+  pdf.setFont("Newsreader", "normal");
+  pdf.setFontSize(10);
+
+  // Generate AutoTable for item details
+  const itemDetailsRows = itemsData?.map((item, index) => [
+    (index + 1).toString(),
+    item.itemName.toString(),
+    item.quantity?.toString(),
+    item.uom?.toString(),
+    item.total?.toLocaleString(),
+  ]);
+  const itemDetailsHeaders = ["S.No", "Item Name", "Quantity", "UOM", "Total"];
+  const columnWidths = [15, 90, 30, 30, 23]; // Adjust column widths as needed
+  // Define table styles
+  const headerStyles = {
+    fillColor: [240, 240, 240],
+    textColor: [0],
+    fontFamily: "Newsreader",
+    fontStyle: "bold",
+  };
+  pdf.setFont("Newsreader");
+  const itemDetailsYStart = 88;
+
+  // Add summary and page numbers
+  const summaryYStart = pdf.internal.pageSize.getHeight() - 50;
+
+  pdf.setFont("Newsreader", "noraml");
+  pdf.text("Thanking You,", 13, summaryYStart + 20);
+  pdf.text("Yours Faithfully,", 13, summaryYStart + 24);
+  pdf.text("For ", 13, summaryYStart + 28);
+  pdf.setFont("Newsreader", "bold");
+  pdf.text("Aalam Info Solutions LLP", 19, summaryYStart + 28);
+
+  // Save the PDF
+  pdf.save(`RFQ.pdf`);
+
+  // pdf open in a new tab
+  const pdfDataUri = pdf.output("datauristring");
+  const newTab = window.open();
+  newTab?.document.write(
+    `<iframe width='100%' height='100%' src='${pdfDataUri}'></iframe>`
+  );
+};
+export default ReleaseDefault;
