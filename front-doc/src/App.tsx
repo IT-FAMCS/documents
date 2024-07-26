@@ -1,17 +1,17 @@
-import { useState, useEffect } from "react";
-import "./App.css";
-import { Route, Routes, useLocation } from "react-router-dom";
-import { HomePage } from "./pages/home/HomePage";
-import { ReportPage } from "./pages/ReportPage";
-import { ReleasePage } from "./pages/documentForms/release/ReleasePage";
-import { OrderPage } from "./pages/OrderPage";
-import { ListPage } from "./pages/ListPage";
-import { ThemeProvider } from "./providers/ThemeProvider";
-import { HeaderComponent } from "./components/header/HeaderComponent";
-import { FooterComponent } from "./components/footer/FooterComponent";
-import Loader from "./components/loader/Loader";
-import { LoginPage } from "./pages/login/LoginPage";
-import { AboutCreatorsPage } from "./pages/creators/AboutCreatorsPage";
+import { useState, useEffect } from 'react';
+import './App.css';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { HomePage } from './pages/home/HomePage';
+import { ReportPage } from './pages/documentForms/report/ReportPage';
+import { ReleasePage } from './pages/documentForms/release/ReleasePage';
+import { OrderPage } from './pages/OrderPage';
+import { ListPage } from './pages/ListPage';
+import { ThemeProvider } from './providers/ThemeProvider';
+import { HeaderComponent } from './components/header/HeaderComponent';
+import { FooterComponent } from './components/footer/FooterComponent';
+import Loader from './components/loader/Loader';
+import { LoginPage } from './pages/login/LoginPage';
+import { AboutCreatorsPage } from './pages/creators/AboutCreatorsPage';
 
 function App() {
   const [loading, setLoading] = useState(true);
