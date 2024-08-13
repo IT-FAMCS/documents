@@ -6,9 +6,12 @@ import "../../components/header/Header.css";
 import { ThemeContext } from "../../providers/ThemeProvider";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { useAuth } from "../../hooks/useLogin";
 
 export const HeaderComponent = () => {
   const { theme, setTheme } = useContext(ThemeContext);
+
+  const { logout } = useAuth();
 
   const changeTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -33,8 +36,8 @@ export const HeaderComponent = () => {
           <Button id="Home-Back" variant="outlined" href={"/"}>
             Home
           </Button>
-          <Button id="account" variant="outlined">
-            Account
+          <Button id="account" variant="outlined" onClick={logout}>
+            Logout
           </Button>
         </div>
       </Stack>

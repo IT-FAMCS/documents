@@ -1,8 +1,7 @@
 import { LOGIN_URL, LOGOUT_URL, CHECK_TOKEN_URL } from "../constants/apiUrls";
-
 import { fetchPost } from "../api/FetchPost";
 
-export default function useAuth() {
+export const useAuth = () => {
   const login = async (email: string, password: string) => {
     try {
       const response = await fetchPost(LOGIN_URL, {
@@ -29,15 +28,17 @@ export default function useAuth() {
   const checkToken = async () => {
     const token = localStorage.getItem("token");
     if (!token) {
-      return;
+      return false;
     }
 
     try {
       await fetchPost(CHECK_TOKEN_URL, { token });
+      return true;
     } catch (error) {
       console.error("Token check failed:", error);
+      return false;
     }
   };
 
   return { login, logout, checkToken };
-}
+};
