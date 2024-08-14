@@ -70,6 +70,8 @@ export const ReleasePage = () => {
     'Virginia Andrews',
     'Kelly Snyder'
   ]);
+  const [showInput, setShowInput] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
   const handleDateChange = (index: number, newDate: Dayjs | null) => {
     const newData = [...releaseData];
@@ -128,9 +130,6 @@ export const ReleasePage = () => {
   const handleResponsibleChange = (event: any) => {
     setResponsible(event.target.value);
   };
-
-  const [showInput, setShowInput] = useState(false);
-  const [inputValue, setInputValue] = useState('');
 
   const handleButtonClick = () => {
     setShowInput(true);
