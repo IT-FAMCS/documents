@@ -1,7 +1,21 @@
-import { LOGIN_URL, LOGOUT_URL, CHECK_TOKEN_URL } from "../constants/apiUrls";
+import { useState, useEffect } from "react";
+import { LOGIN_URL, CHECK_TOKEN_URL } from "../constants/apiUrls";
 import { fetchPost } from "../api/FetchPost";
+import { useNavigate } from "react-router-dom";
 
 export const useAuth = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const verifyToken = async () => {
+      const result = await checkToken();
+      setIsAuthenticated(result);
+    };
+
+    verifyToken();
+  }, []);
+
   const login = async (email: string, password: string) => {
     try {
       const response = await fetchPost(LOGIN_URL, {
@@ -9,20 +23,18 @@ export const useAuth = () => {
         password,
       });
       if (response.token) {
-        localStorage.setItem("token", response?.token);
+        localStorage.setItem("token", response.token);
+        setIsAuthenticated(true);
       }
     } catch (error) {
       console.error("Login failed:", error);
     }
   };
 
-  const logout = async () => {
-    try {
-      await fetchPost(LOGOUT_URL, {});
-      localStorage.removeItem("token");
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
+  const logout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    navigate("/login");
   };
 
   const checkToken = async () => {
@@ -40,5 +52,5 @@ export const useAuth = () => {
     }
   };
 
-  return { login, logout, checkToken };
+  return { login, logout, checkToken, isAuthenticated };
 };

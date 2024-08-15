@@ -10,8 +10,7 @@ import { useAuth } from "../../hooks/useLogin";
 
 export const HeaderComponent = () => {
   const { theme, setTheme } = useContext(ThemeContext);
-
-  const { logout } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
 
   const changeTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -33,12 +32,16 @@ export const HeaderComponent = () => {
           <Button id="topic" variant="outlined" onClick={changeTheme}>
             {theme === "dark" ? <Brightness4Icon /> : <Brightness7Icon />}
           </Button>
-          <Button id="Home-Back" variant="outlined" href={"/"}>
-            Home
-          </Button>
-          <Button id="account" variant="outlined" onClick={logout}>
-            Logout
-          </Button>
+          {isAuthenticated && (
+            <>
+              <Button id="Home-Back" variant="outlined" href={"/"}>
+                На главную
+              </Button>
+              <Button id="account" variant="outlined" onClick={logout}>
+                Выйти
+              </Button>
+            </>
+          )}
         </div>
       </Stack>
     </header>

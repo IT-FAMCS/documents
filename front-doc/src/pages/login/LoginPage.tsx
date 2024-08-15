@@ -11,10 +11,6 @@ export const LoginPage = () => {
 
   const { login } = useAuth();
 
-  const loginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   const handleShowPassChange = () => {
     setShowPassword(!showPassword);
   };
@@ -25,7 +21,6 @@ export const LoginPage = () => {
         style={{
           width: "100",
         }}
-        onSubmit={loginSubmit}
       >
         <h1
           style={{
