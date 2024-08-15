@@ -18,6 +18,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { daysOfWeek, approverList } from '../../../constants/reportConstants';
 
 export const ReportPage = () => {
   interface Report {
@@ -45,10 +46,6 @@ export const ReportPage = () => {
   const [eventOrg, setEventOrg] = useState('');
   const [secondPrefix, setSecondPrefix] = useState('просит Вас ');
   const [action, setAction] = useState('');
-
-  const daysOfWeek = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Cуббота'];
-
-  const approverList = ['Замдекана', 'Декан', 'ГСБ'];
 
   const handleSecondPrefixChange = (e: any) => {
     setSecondPrefix(e.target.value);
@@ -145,18 +142,14 @@ export const ReportPage = () => {
       <Box
         sx={{
           display: 'grid',
-          flexDirection: 'column',
           gap: 5,
           padding: 5,
           alignItems: 'flex-start',
-          alignContent: 'flex-start',
           width: '100%'
         }}
-        gap={2}
-        padding={5}
       >
-        <Box gap={30} sx={{ width: '100%', display: 'flex', flexDirection: 'row' }}>
-          <FormControl sx={{ m: 1, width: 150 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 5 }}>
+          <FormControl sx={{ width: 150 }}>
             <InputLabel>Кому</InputLabel>
             <Select onChange={handleApproverChange}>
               {approverList.map((appr, i) => (
@@ -167,23 +160,17 @@ export const ReportPage = () => {
             </Select>
           </FormControl>
           <TextField
-            sx={{ width: 650 }}
+            sx={{ width: 700 }}
             value={sender}
             label="От кого"
             variant="outlined"
+            placeholder="Председатель Студенческого Совета по качеству образования и науки ФПМИ Шевцов Е. О."
             onInput={handleSenderChange}
           />
         </Box>
-        <Box gap={2} sx={{ width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-          <TextField
-            sx={{
-              minWidth: 120
-            }}
-            label="Предлог"
-            value={firstPrefix}
-            onChange={handleFirstPrefixChange}
-            placeholder="началом проведения дополнительных занятий по дисциплинам, преподаваемым на факультете, основной целью которых является закрепление полученных знаний и изучение прикладного применения дисциплин"
-          />
+
+        <Box sx={{ width: '100%', display: 'flex', flexDirection: 'row', gap: 2, alignItems: 'flex-start' }}>
+          <TextField sx={{ minWidth: 120 }} label="Предлог" value={firstPrefix} onChange={handleFirstPrefixChange} />
           <TextField
             label="Мероприятие"
             value={event}
@@ -191,7 +178,7 @@ export const ReportPage = () => {
             multiline={true}
             rows={4}
             fullWidth
-            placeholder="началом проведения дополнительных занятий по дисциплинам, преподаваемым на факультете, основной целью которых является закрепление полученных знаний и изучение прикладного применения дисциплин"
+            placeholder='началом работы клуба английского языка "English Speaking Club", основной целью которого является желание улучшить навыки коммуникации на английском языке'
           />
           <TextField
             label="Организатор"
@@ -203,13 +190,10 @@ export const ReportPage = () => {
             placeholder="Студенческий Совет по качеству образования и науки ФПМИ"
           />
           <TextField
-            sx={{
-              minWidth: 120
-            }}
+            sx={{ minWidth: 120 }}
             label="Обращение"
             value={secondPrefix}
             onChange={handleSecondPrefixChange}
-            placeholder="началом проведения дополнительных занятий по дисциплинам, преподаваемым на факультете, основной целью которых является закрепление полученных знаний и изучение прикладного применения дисциплин"
           />
           <TextField
             label="Что сделать"
@@ -218,10 +202,11 @@ export const ReportPage = () => {
             fullWidth
             multiline={true}
             rows={4}
-            placeholder=" выделить для проведения занятий"
+            placeholder="выделить для проведения занятий аудитории в понедельник с 19.10 до 20.30 и пятницу с 17.40 до 19.00"
           />
         </Box>
-        <Box gap={2} sx={{ width: '100%', display: 'flex', alignItems: 'center', direction: 'row' }}>
+
+        <Box sx={{ width: '100%', display: 'flex', gap: 2, alignItems: 'center' }}>
           <Button onClick={handleAddAud} variant="outlined" sx={{ width: '50%' }}>
             <AddIcon />
           </Button>
@@ -229,6 +214,7 @@ export const ReportPage = () => {
             <RemoveIcon />
           </Button>
         </Box>
+
         {auditories.map((aud, i) => (
           <Box key={i} sx={{ display: 'flex', flexDirection: 'row', gap: 2, alignItems: 'center' }}>
             <TextField
@@ -236,21 +222,17 @@ export const ReportPage = () => {
               label="Номер аудитории"
               value={aud.number}
               inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-            ></TextField>
+            />
             <TimePicker
               onChange={(newValue) => handleAudTimeFromChange(newValue, i)}
-              sx={{
-                maxWidth: 120
-              }}
+              sx={{ maxWidth: 120 }}
               label="Начало"
               ampm={false}
               value={aud.timeFrom}
             />
             <TimePicker
               onChange={(newValue) => handleAudTimeToChange(newValue, i)}
-              sx={{
-                maxWidth: 120
-              }}
+              sx={{ maxWidth: 120 }}
               label="Конец"
               ampm={false}
               value={aud.timeTo}
@@ -288,6 +270,7 @@ export const ReportPage = () => {
             />
           </Box>
         ))}
+
         <Button onClick={handleSendData} variant="outlined" sx={{ mt: 2, width: 300 }}>
           Сгенерировать документ
         </Button>
