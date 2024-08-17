@@ -29,9 +29,7 @@ function App() {
     };
 
     verifyToken();
-  }, [pathname]);
 
-  useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
     }, 500);
