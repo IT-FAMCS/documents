@@ -1,16 +1,15 @@
 import { VisibilityOff, Visibility } from "@mui/icons-material";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { useState } from "react";
+import { useAuth } from "../../hooks/useLogin";
 
 export const LoginPage = () => {
-  const [login, setLogin] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const loginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
+  const { login } = useAuth();
 
   const handleShowPassChange = () => {
     setShowPassword(!showPassword);
@@ -22,7 +21,6 @@ export const LoginPage = () => {
         style={{
           width: "100",
         }}
-        onSubmit={loginSubmit}
       >
         <h1
           style={{
@@ -36,7 +34,7 @@ export const LoginPage = () => {
           fullWidth
           label="Login"
           required
-          onChange={(e) => setLogin(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           margin="normal"
         />
         <TextField
@@ -59,6 +57,9 @@ export const LoginPage = () => {
           className={error ? "error" : ""}
         ></TextField>
         <Button
+          onClick={() => {
+            login(email, password);
+          }}
           fullWidth
           variant="contained"
           type="submit"
