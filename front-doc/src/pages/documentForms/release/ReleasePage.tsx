@@ -25,6 +25,9 @@ import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import ReleaseDefault from '../../../components/releases/ReleaseDefault';
+import { ReleaseMilitary } from '../../../components/releases/ReleaseMilitary';
+import jsPDF from 'jspdf';
 
 export const ReleasePage = () => {
   const MenuProps = {
@@ -70,8 +73,6 @@ export const ReleasePage = () => {
     'Virginia Andrews',
     'Kelly Snyder'
   ]);
-  const [showInput, setShowInput] = useState(false);
-  const [inputValue, setInputValue] = useState('');
 
   const handleDateChange = (index: number, newDate: Dayjs | null) => {
     const newData = [...releaseData];
@@ -102,13 +103,14 @@ export const ReleasePage = () => {
     setReleaseData(newData);
   };
 
-  const handleSendData = () => {
+  const handleSendData = async () => {
     console.log({
       dates: releaseData,
       ismilitary: isMilitary,
       title: title,
       responsible: responsible
     });
+    ReleaseDefault();
   };
 
   const handleAddDate = () => {
@@ -130,6 +132,9 @@ export const ReleasePage = () => {
   const handleResponsibleChange = (event: any) => {
     setResponsible(event.target.value);
   };
+
+  const [showInput, setShowInput] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
   const handleButtonClick = () => {
     setShowInput(true);
@@ -159,7 +164,15 @@ export const ReleasePage = () => {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, padding: 5 }}>
         {releaseData.map((release, index) => (
-          <Box key={index} sx={{ display: 'flex', flexDirection: 'row', gap: 2, alignItems: 'center' }}>
+          <Box
+            key={index}
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 2,
+              alignItems: 'center'
+            }}
+          >
             <DatePicker
               label="Дата освобождения"
               value={release.date}
@@ -239,7 +252,14 @@ export const ReleasePage = () => {
             </Collapse>
           </Box>
         ))}
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, alignItems: 'center' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: 2,
+            alignItems: 'center'
+          }}
+        >
           <Button onClick={handleAddDate} variant="outlined" sx={{ width: '50%' }}>
             <AddIcon />
           </Button>

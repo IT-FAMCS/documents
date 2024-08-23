@@ -3,7 +3,6 @@ import {
   Button,
   Checkbox,
   Chip,
-  Collapse,
   FormControl,
   FormControlLabel,
   InputLabel,
@@ -14,30 +13,14 @@ import {
 } from '@mui/material';
 import { DatePicker, LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs, { Dayjs } from 'dayjs';
 import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { daysOfWeek, approverList } from '../../../constants/reportConstants';
+import { Report, AudotoryInfo } from '../../../interfaces/DocumentInterfaces';
+import { generateReportPDF } from '../../../components/report/ReportDefault';
 
 export const ReportPage = () => {
-  interface Report {
-    approver: string;
-    sender: string;
-    firstPrefix: string;
-    event: string;
-    eventOrg: string;
-    secondPrefix: string;
-    action: string;
-    auds: AudotoryInfo[];
-  }
-  interface AudotoryInfo {
-    number: number;
-    days: string[];
-    timeFrom: Dayjs | null;
-    timeTo: Dayjs | null;
-    allWeek: boolean;
-  }
   const [auditories, setAuditories] = useState<AudotoryInfo[]>([]);
   const [approver, setApprover] = useState('Замдекана');
   const [sender, setSender] = useState('');
@@ -135,6 +118,7 @@ export const ReportPage = () => {
       auds: auditories
     };
     console.log(report);
+    generateReportPDF(report);
   };
 
   return (
@@ -252,8 +236,8 @@ export const ReportPage = () => {
                 )}
               >
                 {daysOfWeek.map((day, i) => (
-                  <MenuItem key={i} value={day}>
-                    {day}
+                  <MenuItem key={i} value={day.val}>
+                    {day.name}
                   </MenuItem>
                 ))}
               </Select>

@@ -12,12 +12,24 @@ import { FooterComponent } from './components/footer/FooterComponent';
 import Loader from './components/loader/Loader';
 import { LoginPage } from './pages/login/LoginPage';
 import { AboutCreatorsPage } from './pages/creators/AboutCreatorsPage';
+import ProtectedRoute from '../src/ProtectedRoute';
+import { useAuth } from '../src/hooks/useLogin';
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const { pathname } = useLocation(); //hook for set url pathname
+  const { checkToken } = useAuth();
 
   useEffect(() => {
+    const verifyToken = async () => {
+      const authenticated = await checkToken();
+      setIsAuthenticated(authenticated);
+      setLoading(false);
+    };
+
+    verifyToken();
+
     const timeout = setTimeout(() => {
       setLoading(false);
     }, 500);
@@ -36,13 +48,22 @@ function App() {
       <HeaderComponent />
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="report" element={<ReportPage />} />
-          <Route path="release" element={<ReleasePage />} />
-          <Route path="order" element={<OrderPage />} />
-          <Route path="list" element={<ListPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="creators" element={<AboutCreatorsPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<ProtectedRoute element={<HomePage />} isAuthenticated={isAuthenticated} />} />
+          <Route
+            path="report"
+            element={<ProtectedRoute element={<ReportPage />} isAuthenticated={isAuthenticated} />}
+          />
+          <Route
+            path="release"
+            element={<ProtectedRoute element={<ReleasePage />} isAuthenticated={isAuthenticated} />}
+          />
+          <Route path="order" element={<ProtectedRoute element={<OrderPage />} isAuthenticated={isAuthenticated} />} />
+          <Route path="list" element={<ProtectedRoute element={<ListPage />} isAuthenticated={isAuthenticated} />} />
+          <Route
+            path="creators"
+            element={<ProtectedRoute element={<AboutCreatorsPage />} isAuthenticated={isAuthenticated} />}
+          />
         </Routes>
       </main>
       <FooterComponent />
