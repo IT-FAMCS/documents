@@ -5,47 +5,35 @@ import '../../fonts/Times New Roman Cyr Regular-normal';
 export const generateReportPDF = (report: Report) => {
   const doc = new jsPDF();
 
-  // Установить шрифт и размер шрифта
-
   doc.addFont('Times New Roman Cyr Regular-normal.ttf', 'Times New Roman Cyr Regular', 'normal');
 
-  // Установка шрифта
   doc.setFont('Times New Roman Cyr Regular', 'normal');
 
-  // Центрировать текст вручную, вычисляя ширину страницы и текста
   let pageWidth = doc.internal.pageSize.getWidth();
-
-  // Заголовок и шапка документа
-  let title = 'СТУДЕНЧЕСКИЙ СОЮЗ БГУ';
-  let titleWidth = doc.getTextWidth(title);
-  doc.text(title, (pageWidth - titleWidth) / 2, 20);
-
-  //doc.setFont('times', 'normal');
-  doc.setFontSize(10);
-
-  let lines = [
-    'Республика Беларусь 220030',
-    'г. Минск пр. Независимости 4',
-    'Тел.: +375 17 209 54 38',
-    'Факс: +375 17 209 50 59',
-    'E-mail: stud.union.bsu@gmail.com'
-  ];
-
-  lines.forEach((line, index) => {
-    let textWidth = doc.getTextWidth(line);
-    doc.text(line, (pageWidth - textWidth) / 2, 25 + index * 5);
-  });
-
-  // Декан
   doc.setFontSize(12);
-  doc.text('Декану ФПМИ', 150, 60);
-  doc.text('Орловичу Ю.Л.', 150, 65);
+
+  // шапка документа
+  let facultyTitle = 'Факультет прикладной математики и информатики';
+  let reportTitle = 'ДОКЛАДНАЯ ЗАПИСКА';
+  let reportDate = '24.03.2023 г. № _________';
+  let location = 'г. Минск';
+  let recipientTitle = 'Начальнику службы охраны и безопасности';
+  let recipientName = 'Довыдёнку А.О.';
+
+  // Заголовок факультета
+  doc.text(facultyTitle, 20, 20, { maxWidth: pageWidth / 2 - 40 });
+
+  doc.text(reportTitle, 20, 35);
+  doc.text(reportDate, 20, 45);
+  doc.text(location, 20, 55);
+
+  let recipientTitleWidth = doc.getTextWidth(recipientTitle);
+  doc.text(recipientTitle, pageWidth - recipientTitleWidth - 20, 20);
+  let recipientNameWidth = doc.getTextWidth(recipientName);
+  doc.text(recipientName, pageWidth - recipientNameWidth - 20, 25);
 
   const margin = 10;
   const maxWidth = pageWidth - margin * 2;
-
-  let width = doc.getTextWidth(`Уважаемый Юрий Леонидович!\n`);
-  doc.text(`Уважаемый Юрий Леонидович!\n`, (pageWidth - width) / 2, 70);
 
   doc.setFontSize(12);
   const text =
@@ -61,7 +49,7 @@ export const generateReportPDF = (report: Report) => {
     report.action +
     '\n';
 
-  doc.text(text, 20, 80, { maxWidth: maxWidth });
+  doc.text(text, 20, 70, { maxWidth: maxWidth });
 
   report.auds.forEach((aud, index) => {
     let daysText = '';
@@ -72,15 +60,15 @@ export const generateReportPDF = (report: Report) => {
     }
     let timeText = 'c ' + aud.timeFrom?.format('HH:mm') + ' по ' + aud.timeTo?.format('HH:mm');
 
-    doc.text(`-. Аудиторию ${aud.number} ${daysText} ${timeText} `, 30, 100 + index * 10);
+    doc.text(`-. Аудиторию ${aud.number} ${daysText} ${timeText} `, 30, 85 + index * 10);
   });
 
-  doc.text(`${report.sender}`, 20, 130);
-  doc.text('Е.О.Шевцов', 20, 135);
+  doc.text(`${report.sender}`, 20, 100);
+  doc.text('Е.О.Шевцов', 20, 105);
 
-  doc.text('Согласовано:', 20, 150);
-  doc.text('Декан ФПМИ БГУ', 20, 155);
-  doc.text('Ю.Л.Орлович', 20, 160);
+  doc.text('Согласовано:', pageWidth - 50, 100);
+  doc.text('Декан ФПМИ БГУ', pageWidth - 50, 105);
+  doc.text('Ю.Л.Орлович', pageWidth - 50, 110);
 
   doc.save('докладная.pdf');
   const pdfDataUri = doc.output('datauristring');
