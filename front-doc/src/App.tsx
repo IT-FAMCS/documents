@@ -25,6 +25,7 @@ function App() {
     const verifyToken = async () => {
       const authenticated = await checkToken();
       setIsAuthenticated(authenticated);
+
       setLoading(false);
     };
 
@@ -32,7 +33,7 @@ function App() {
 
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 1500);
     return () => {
       setLoading(true);
       clearTimeout(timeout);
@@ -40,7 +41,15 @@ function App() {
   }, [pathname]); //if location pathname changing -> useEffect start work
 
   if (loading) {
-    return <Loader />;
+    return (
+      <ThemeProvider>
+        <HeaderComponent />
+        <main>
+          <Loader />
+        </main>
+        <FooterComponent />
+      </ThemeProvider>
+    );
   }
 
   return (
